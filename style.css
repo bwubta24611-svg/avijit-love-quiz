@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: #fff0f5;
+
+    background:
+        radial-gradient(circle at top left, #66204c, transparent 45%),
+        radial-gradient(circle at bottom right, #41205d, transparent 45%),
+        #160b1d;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+    overflow-x: hidden;
+}
+
+.hearts {
+    position: fixed;
+    top: 25px;
+    right: 20px;
+    font-size: 25px;
+    opacity: 0.65;
+    animation: float 4s ease-in-out infinite;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    width: 100%;
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 192, 203, 0.3);
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25);
+
+    animation: appear 0.7s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.heart-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.small-heading {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #ffb5d0;
+    margin-bottom: 20px;
+}
+
+h1,
+h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+h1 {
+    font-size: clamp(30px, 6vw, 43px);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: clamp(22px, 4vw, 30px);
+    margin: 25px 0;
+}
+
+.description {
+    color: #e8d6e5;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.signature {
+    color: #ffb5d0;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-style: italic;
+    margin: 25px 0;
+}
+
+button {
+    border: none;
+    outline: none;
+
+    padding: 14px 25px;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #ff5c9d, #e63e83);
+
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 20px rgba(255, 92, 157, 0.25);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 92, 157, 0.4);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.progress-container {
+    width: 100%;
+    height: 7px;
+
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+
+    background: linear-gradient(90deg, #ff76ad, #ffc1d8);
+
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+#question-count {
+    font-size: 13px;
+    color: #ffb5d0;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    margin: 25px 0;
+}
+
+.option {
+    width: 100%;
+    min-height: 60px;
+
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 192, 203, 0.25);
+
+    box-shadow: none;
+    border-radius: 15px;
+
+    color: #fff0f5;
+    font-weight: 500;
+}
+
+.option:hover {
+    background: rgba(255, 92, 157, 0.15);
+}
+
+.option.selected {
+    background: rgba(255, 92, 157, 0.25);
+    border: 2px solid #ff83b5;
+}
+
+#compatibility-score {
+    font-size: clamp(55px, 12vw, 85px);
+    font-weight: 700;
+    color: #ff91bd;
+
+    margin: 25px 0;
+
+    font-family: 'Playfair Display', serif;
+}
+
+#result-message {
+    color: #f5ddeb;
+    line-height: 2;
+    white-space: pre-line;
+    margin: 20px 0;
+}
+
+.disclaimer {
+    color: #cbb8ca;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 20px 0;
+}
+
+.letter-content {
+    text-align: left;
+    line-height: 2;
+    color: #f5ddeb;
+}
+
+.letter-content p {
+    margin-bottom: 18px;
+}
+
+.final-line {
+    color: #ffb5d0;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+}
+
+.sign-name {
+    color: #ff91bd;
+    margin: 15px 0;
+}
+
+.footer-text {
+    color: #cbb8ca;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 30px 18px;
+        border-radius: 20px;
+    }
+
+    #options {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
+/* Floating romantic hearts */
+
+#hearts-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    font-size: 24px;
+
+    animation: heartRise linear forwards;
+
+    filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.5));
+}
+
+@keyframes heartRise {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(35deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* Smooth transitions between screens */
+
+.card {
+    animation: cinematicEntrance 0.8s ease both;
+}
+
+@keyframes cinematicEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Romantic glow around the main card */
+
+.card {
+    box-shadow:
+        0 15px 60px rgba(0, 0, 0, 0.25),
+        0 0 35px rgba(255, 92, 157, 0.08);
+}
+
+/* Better interaction for quiz options */
+
+.option {
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.option.selected {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 92, 157, 0.12);
+}
+
+/* Glowing compatibility score */
+
+#compatibility-score {
+    text-shadow: 0 0 30px rgba(255, 145, 189, 0.35);
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 480px) {
+    .floating-heart {
+        font-size: 19px;
+    }
+
+    .card {
+        animation-duration: 0.6s;
+    }
+}
+/* Sweet note shown after selecting an answer */
+
+.sweet-note {
+    margin: 22px 0;
+    padding: 18px;
+
+    background: rgba(255, 145, 189, 0.10);
+    border: 1px solid rgba(255, 145, 189, 0.35);
+    border-radius: 16px;
+
+    animation: noteReveal 0.6s ease both;
+}
+
+.note-heart {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+#sweet-note-text {
+    color: #ffd6e6;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+@keyframes noteReveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
