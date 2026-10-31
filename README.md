@@ -1,1 +1,1 @@
-# avijit-love-quiz
+# arijit-love-quiz
